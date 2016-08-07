@@ -1,0 +1,10 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}This is an example page{% endblock %}
+
+{% block content %}
+  <h1>{{message}}</h1>
+  <form action="/" method="POST">
+    Query:<br>
+    <input type="text" name="query">
+  </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='form.css') }}">
+{% block body %}
+  <h2>Enter a query</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <div class=container>
+    <form action="/" method=post>
+      <dl>
+        <dt>Query:
+        <dd><input class=query type="text" name=query>
+        <dt>Database:
+        <dd><input type="radio" name="db" value="mongo" checked> MongoDB<br>
+        <dd><input type="radio" name="db" value="postgres"> PortgreSQL<br>
+      </dl>
+    </form>
+  </div>
+{% endblock %}
