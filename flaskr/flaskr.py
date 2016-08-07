@@ -2,6 +2,7 @@ import os
 import sys
 import psycopg2
 import pymongo
+from pymongo import MongoClient
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 
@@ -16,8 +17,8 @@ MONGOPORT = 27017
 client = MongoClient(MONGOSERVER, MONGOPORT)
 mongodb = client[MONGODATABASE]
 
-POSTGREDATABASE = "myDatabase"
-POSTGREUSER = "myUser"
+POSTGREDATABASE = "mydatabase"
+POSTGREUSER = "myuser"
 POSTGREPASS = "myPass"
 postgredb = psycopg2.connect(database=POSTGREDATABASE, user=POSTGREUSER, password=POSTGREPASS)
 
@@ -35,12 +36,13 @@ def mongo():
 
     return str(docs)
 
+
 @app.route("/postgre")
 def postgre():
     cursor = postgredb.cursor()
-    cursor.execute("SELECT * FROM table")
+    cursor.execute("SELECT * FROM mytable;")
 
-    return str(cursor.fetchall())   
+    return str(cursor.fetchall())
 
 if __name__ == "__main__":
     app.run()
