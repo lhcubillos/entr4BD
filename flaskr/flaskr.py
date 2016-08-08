@@ -24,8 +24,8 @@ MONGOPORT = 27017
 client = MongoClient(MONGOSERVER, MONGOPORT)
 mongodb = client[MONGODATABASE]
 
-POSTGRESDATABASE = "mydatabase"
-POSTGRESUSER = "myuser"
+POSTGRESDATABASE = "myDatabase"
+POSTGRESUSER = "myUser"
 POSTGRESPASS = "myPass"
 postgresdb = psycopg2.connect(database=POSTGRESDATABASE, user=POSTGRESUSER, password=POSTGRESPASS)
 
@@ -49,14 +49,14 @@ def mongo(query):
     # mongodb["myCollection"].find()
     cursor = []
     if "find" in query:
-        exec "cursor = "+query
+        exec ("cursor = mongodb."+query)
         docs = []
         for doc in cursor:
             docs.append(doc)
         return str(docs)
     else:
         # mongodb['myCollection'].insert({'name': 'U2'})
-        exec query
+        exec (query)
         return "ok"
 
 
