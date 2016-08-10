@@ -24,9 +24,9 @@ MONGOPORT = 27017
 client = MongoClient(MONGOSERVER, MONGOPORT)
 mongodb = client[MONGODATABASE]
 
-POSTGRESDATABASE = "myDatabase"
-POSTGRESUSER = "myUser"
-POSTGRESPASS = "myPass"
+POSTGRESDATABASE = "mydatabase"
+POSTGRESUSER = "myuser"
+POSTGRESPASS = "mypass"
 postgresdb = psycopg2.connect(database=POSTGRESDATABASE, user=POSTGRESUSER, password=POSTGRESPASS)
 
 
@@ -70,4 +70,5 @@ def postgres(query):
     return str(cursor.fetchall())
 
 if __name__ == "__main__":
+    app.debug = True
     app.run()

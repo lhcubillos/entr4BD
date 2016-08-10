@@ -1,16 +1,45 @@
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='form.css') }}">
-{% block body %}
-  <h2>Enter a query</h2>
-  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-  <div class=container>
-    <form action="/" method=post>
-      <dl>
+{% extends "layout.html" %}
+
+{% block content %}
+<ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+  <li><a href="#">Regular link</a></li>
+  <li class="disabled"><a href="#">Disabled link</a></li>
+  <li><a href="#">Another link</a></li>
+</ul>
+
+
+  <div>
+    <form action="/" method=post id=form>
+      <h2>Some header</h2>
+      {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input
+            name=query
+            type="text"
+            class="form-control"
+            placeholder="Enter a query..."
+          >
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Search</button>
+          </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+      <!-- <dl>
         <dt>Query:
         <dd><input class=query type="text" name=query>
         <dt>Database:
         <dd><input type="radio" name="db" value="mongo" checked> MongoDB<br>
         <dd><input type="radio" name="db" value="postgres"> PortgreSQL<br>
-      </dl>
+      </dl> -->
+      <div id="rbuttons">
+        <input type="radio" name="db" value="mongo" checked>
+          <label>MongoDB</label><br>
+        <input type="radio" name="db" value="postgres">
+          <label>PortgreSQL</label><br>
+      </div>
+
     </form>
   </div>
+
 {% endblock %}
