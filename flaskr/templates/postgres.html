@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      {% for element in schema %}
+      <th>{{ element[0].upper() }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for result in results %}
+      <tr>
+        {% for data in result %}
+          <td>{{ data }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,3 +1,5 @@
+
+
 import os
 import sys
 import psycopg2
@@ -7,7 +9,11 @@ from flask_bootstrap import Bootstrap
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 # app = Flask(__name__)
+
 def create_app():
   app = Flask(__name__)
   Bootstrap(app)
@@ -63,11 +69,22 @@ def mongo(query):
 
 @app.route("/postgres")
 def postgres(query):
+
     cursor = postgresdb.cursor()
     # cursor.execute("SELECT * FROM mytable;")
-    cursor.execute(query)
+    cursor.execute("SELECT column_name, data_type, character_maximum_length FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name ='mytable'")
+    schema = []
+    for result in cursor:
+        schema.append([element for element in result])
 
-    return str(cursor.fetchall())
+    cursor.execute(query)
+    results = []
+    for result in cursor:
+        results.append([element for element in result])
+    return render_template('postgres.html', schema=schema, results=results)
+
+    if cur:
+      cur.close()
 
 if __name__ == "__main__":
     app.debug = True
