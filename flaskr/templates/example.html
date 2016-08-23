@@ -1,10 +1,9 @@
-{% extends "bootstrap/base.html" %}
-{% block title %}This is an example page{% endblock %}
+{% extends "layout.html" %}
 
 {% block content %}
-  <h1>{{message}}</h1>
-  <form action="/" method="POST">
-    Query:<br>
-    <input type="text" name="query">
-  </form>
+{% for result in results %}
+  <p>query: {{result[0]}}</p>
+  <p>result: {{result[1]}}</p>
+  <br/>
+{% endfor %}
 {% endblock %}

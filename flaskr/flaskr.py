@@ -1,9 +1,8 @@
-
-
 import os
 import sys
 import psycopg2
 import pymongo
+
 from pymongo import MongoClient
 from flask_bootstrap import Bootstrap
 from flask import Flask, request, session, g, redirect, url_for, abort, \
@@ -11,8 +10,6 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
-# app = Flask(__name__)
 
 def create_app():
   app = Flask(__name__)
@@ -22,7 +19,7 @@ def create_app():
 
 app = create_app()
 
-
+# Mongo config
 MONGODATABASE = "myDatabase"
 MONGOCOLLECTION = "myCollection"
 MONGOSERVER = "localhost"
@@ -30,6 +27,7 @@ MONGOPORT = 27017
 client = MongoClient(MONGOSERVER, MONGOPORT)
 mongodb = client[MONGODATABASE]
 
+# Postgres config
 POSTGRESDATABASE = "mydatabase"
 POSTGRESUSER = "myuser"
 POSTGRESPASS = "mypass"
@@ -48,11 +46,27 @@ def home():
     else:
         return render_template('form.html')
 
+@app.route("/file")
+def queries():
+    f = open('queries', 'r')
+    database = "postgres"
+    pairs = []
+    for line in f:
+        line = line.rstrip('\n')
+        if (line[0:1] == '#'):
+            database = line[2:]
+        elif (len(line)>2):
+            print (line)
+            if (database == "postgres"):
+                pairs.append([line, postgres(line)])
+            else:
+                pairs.append([line, mongo(line)])
+    return render_template('example.html', results = pairs)
 
 @app.route("/mongo")
 def mongo(query):
     # cursor = mongodb[MONGOCOLLECTION].find()
-    # mongodb["myCollection"].find()
+    # myCollection.find()
     cursor = []
     if "find" in query:
         exec ("cursor = mongodb."+query)
@@ -61,15 +75,12 @@ def mongo(query):
             docs.append(doc)
         return str(docs)
     else:
-        # mongodb['myCollection'].insert({'name': 'U2'})
-        exec (query)
+        # myCollection.insert({'name': 'U2'})
+        exec ("mongodb."+query)
         return "ok"
-
-
 
 @app.route("/postgres")
 def postgres(query):
-
     cursor = postgresdb.cursor()
     # cursor.execute("SELECT * FROM mytable;")
     cursor.execute("SELECT column_name, data_type, character_maximum_length FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name ='mytable'")
@@ -81,10 +92,8 @@ def postgres(query):
     results = []
     for result in cursor:
         results.append([element for element in result])
-    return render_template('postgres.html', schema=schema, results=results)
-
-    if cur:
-      cur.close()
+    # return render_template('postgres.html', schema=schema, results=results)
+    return results
 
 if __name__ == "__main__":
     app.debug = True
