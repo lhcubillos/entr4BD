@@ -47,7 +47,7 @@ def home():
         return render_template('form.html')
 
 @app.route("/file")
-def queries():
+def queries ():
     f = open('queries', 'r')
     database = "postgres"
     pairs = []
@@ -61,7 +61,7 @@ def queries():
                 pairs.append([line, postgres(line)])
             else:
                 pairs.append([line, mongo(line)])
-    return render_template('example.html', results = pairs)
+    return render_template('file.html', results = pairs)
 
 @app.route("/mongo")
 def mongo(query):
