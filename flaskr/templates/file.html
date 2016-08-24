@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  {% for element in results %}
+  <p>{{element[0]}}</p>
+    {% for algo in element[1] %}
+    <p>{{algo}}</p>
+    {% endfor %}
+  <hr />
+  {% endfor %}
+{% endblock %}
