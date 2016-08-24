@@ -4,4 +4,3 @@ SELECT * FROM mytable LIMIT 2;
 
 # mongo
 myCollection.find()
-myCollection.insert({ 'name': 'Sr. Kawas' })
