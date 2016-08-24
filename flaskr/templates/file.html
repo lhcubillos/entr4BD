@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  {% for type, query, result in results %}
+  {% for db, query, result in results %}
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">{{query}}</h3>
     </div>
     <div class="panel-body">
-      {% if type=="postgres" %}
+      {% if db == "postgres" %}
       <table class="table table-bordered">
         <tbody>
           {% for tuple in result %}

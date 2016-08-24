@@ -1,6 +1,6 @@
-# postgres
+// postgres
 SELECT * FROM mytable;
 SELECT * FROM mytable LIMIT 2;
 
-# mongo
+// mongo
 myCollection.find()
