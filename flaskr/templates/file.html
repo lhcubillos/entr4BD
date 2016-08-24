@@ -1,12 +1,36 @@
 {% extends "layout.html" %}
 
 {% block content %}
+  {% for type, query, result in results %}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{query}}</h3>
+    </div>
+    <div class="panel-body">
+      {% if type=="postgres" %}
+      <table class="table table-bordered">
+        <tbody>
+          {% for tuple in result %}
+            <tr>
+              {% for element in tuple %}
+                <td>{{ element }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+        {% for tuple in result %}
+          {% for element in tuple %}
+            <p>
+              <b>{{element}}</b>: {{tuple[element]}}
+            </p>
+          {% endfor %}
+        <hr />
+        {% endfor %}
+      {% endif %}
 
-  {% for element in results %}
-  <p>{{element[0]}}</p>
-    {% for algo in element[1] %}
-    <p>{{algo}}</p>
-    {% endfor %}
-  <hr />
+    </div>
+  </div>
   {% endfor %}
 {% endblock %}

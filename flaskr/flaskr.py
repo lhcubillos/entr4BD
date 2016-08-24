@@ -47,7 +47,7 @@ def home():
         return render_template('form.html')
 
 @app.route("/file")
-def queries ():
+def file ():
     f = open('queries', 'r')
     database = "postgres"
     pairs = []
@@ -58,9 +58,9 @@ def queries ():
         elif (len(line)>2):
             print (line)
             if (database == "postgres"):
-                pairs.append([line, postgres(line)])
+                pairs.append(["postgres", line, postgres(line)])
             else:
-                pairs.append([line, mongo(line)])
+                pairs.append(["mongo", line, mongo(line)])
     return render_template('file.html', results = pairs)
 
 @app.route("/mongo")
@@ -73,7 +73,7 @@ def mongo(query):
         docs = []
         for doc in cursor:
             docs.append(doc)
-        return str(docs)
+        return (docs)
     else:
         # myCollection.insert({'name': 'U2'})
         exec ("mongodb."+query)
