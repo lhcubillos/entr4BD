@@ -13,3 +13,9 @@ myCollection.find()
 ```sql
 SELECT * FROM myTable
 ```
+
+
+## Pendiente:
+* Agregar nombre y posible descripción a las consultas desde el archivo de texto
+* Limpiar el evento "onClick"
+* Mostrar el esquema de las respuestas en postgres
