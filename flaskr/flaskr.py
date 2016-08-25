@@ -8,8 +8,8 @@ from pymongo import MongoClient
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 
-# reload(sys)
-# sys.setdefaultencoding('utf-8')
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 def create_app():
   app = Flask(__name__)
@@ -51,24 +51,32 @@ def file ():
     database = "postgres"
     pairs = []
     for line in f:
-        line = line[:-1]
+        line = line.rstrip()
         if not line or line[0] == '#':
             continue
-        elif line[0:2] == '//':
+        elif line[:2] == '//':
             database = line[3:]
         else:
-            pairs.append([database, line, eval('{}(line)'.format(database))])
-    return render_template('file.html', results = pairs)
+            # pairs.append([database, line, eval('{}(line)'.format(database))])
+            pairs.append([database, line])
+    return render_template('file.html', results = enumerate(pairs))
 
-@app.route("/mongo")
+@app.route("/mongo/<query>")
 def mongo(query):
-    return list(eval('mongodb.{}'.format(query)))
+    results = eval('mongodb.{}'.format(query))
+    if "find" in query:
+        return render_template('mongo.html', results=list(results))
+    else:
+        return "ok"
 
-@app.route("/postgres")
+
+@app.route("/postgres/<query>")
 def postgres(query):
     cursor = postgresdb.cursor()
     cursor.execute(query)
-    return [list(result) for result in cursor]
+    results = [[a for a in result] for result in cursor]
+    print (results)
+    return render_template('postgres.html', results=results)
 
 if __name__ == "__main__":
     app.debug = True

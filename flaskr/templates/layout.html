@@ -10,11 +10,11 @@
 
       <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-      <link rel="stylesheet" href="{{ url_for('static', filename='postgres.css') }}">
+      <script src="{{url_for('static', filename='file.js')}}"></script>
     {% endblock %}
   </head>
   <body>
-    <div class="container">
+    <div>
       {% block content %}
       {% endblock %}
     </div>

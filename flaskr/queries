@@ -1,6 +1,8 @@
 // postgres
 SELECT * FROM mytable;
-SELECT * FROM mytable LIMIT 2;
+SELECT * FROM mytable WHERE nombre='Sebastián';
 
 // mongo
 myCollection.find()
+myCollection.find( {"gery": "lsakdjdsk"} )
+myCollection.insert( { "gery": "lsakdjdsk" } )

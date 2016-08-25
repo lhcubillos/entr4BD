@@ -1,36 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  {% for db, query, result in results %}
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">{{query}}</h3>
+  <div class="container">
+    {% for index, (db, query) in results %}
+    {% if db=="postgres"%}
+      {% set algomuysucio = 'onClickQuery("{}","{}","{}")'.format(index, db, query) %}
+    {% else %}
+      {% set algomuysucio = "onClickQuery('{}','{}','{}')".format(index, db, query) %}
+    {% endif%}
+    <div class="panel panel-default query-container" onclick="{{algomuysucio}}">
+      <div class="panel-body">{{index}} - {{db}} - {{query}}</div>
     </div>
-    <div class="panel-body">
-      {% if db == "postgres" %}
-      <table class="table table-bordered">
-        <tbody>
-          {% for tuple in result %}
-            <tr>
-              {% for element in tuple %}
-                <td>{{ element }}</td>
-              {% endfor %}
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-        {% for tuple in result %}
-          {% for element in tuple %}
-            <p>
-              <b>{{element}}</b>: {{tuple[element]}}
-            </p>
-          {% endfor %}
-        <hr />
-        {% endfor %}
-      {% endif %}
-
-    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 {% endblock %}
