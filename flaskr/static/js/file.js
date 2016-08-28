@@ -10,9 +10,9 @@ $(document).ready(function(){
     a.replaceWith('<i class="material-icons">'+ARROWS[content]+'</i>');
     var b = $(this).parent().parent().find(".query-card-code").toggle();
   });
+  $(".mdl-button.mdl-button--icon.mdl-js-button.mdl-js-ripple-effect.play").click(function() {
+    var db = $(this).prev()[0].textContent.split('-')[1].trim();
+    var query = $(this).parent().parent().find(".query-card-code > span")[0].textContent;
+    window.location.replace(location.href+db+'/'+query);
+  });
 });
-
-function onClickQuery(index, db, query) {
-  const url = location.href+db+'/'+query;
-  window.location.replace(url);
-}
