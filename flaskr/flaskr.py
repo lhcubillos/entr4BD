@@ -33,20 +33,20 @@ POSTGRESPASS = "mypass"
 postgresdb = psycopg2.connect(database=POSTGRESDATABASE, user=POSTGRESUSER, password=POSTGRESPASS)
 
 
-@app.route("/", methods=['GET', 'POST'])
-def home():
-    if request.method == 'POST':
-        query = request.form['query']
-        db = request.form['db']
-        if db == 'postgres':
-            return postgres(query)
-        else:
-            return mongo(query)
-    else:
-        return render_template('form.html')
+# @app.route("/", methods=['GET', 'POST'])
+# def home():
+#     if request.method == 'POST':
+#         query = request.form['query']
+#         db = request.form['db']
+#         if db == 'postgres':
+#             return postgres(query)
+#         else:
+#             return mongo(query)
+#     else:
+#         return render_template('form.html')
 
-@app.route("/file")
-def file ():
+@app.route("/")
+def home ():
     f = open('queries', 'r')
     database = "postgres"
     pairs = []
@@ -77,6 +77,10 @@ def postgres(query):
     results = [[a for a in result] for result in cursor]
     print (results)
     return render_template('postgres.html', results=results)
+
+@app.route("/example")
+def example():
+    return render_template('example.html')
 
 if __name__ == "__main__":
     app.debug = True
