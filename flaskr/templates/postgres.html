@@ -1,22 +1,22 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<table class="table table-striped">
-  <thead>
-    <tr>
-      {% for element in schema %}
-      <th>{{ element[0].upper() }}</th>
-      {% endfor %}
-    </tr>
-  </thead>
+<div class="content">
+<div class="postgres">
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
   <tbody>
     {% for result in results %}
       <tr>
-        {% for data in result %}
-          <td>{{ data }}</td>
+        {% for element in result %}
+          <td>
+            {{element}}
+          </td>
         {% endfor %}
       </tr>
     {% endfor %}
   </tbody>
 </table>
+
+</div>
+</div>
 {% endblock %}
