@@ -1,14 +1,6 @@
 {% extends "layout.html" %}
-
 {% block content %}
-<div class="content">
-<div class="mongo">
-  {% for element in results %}
-  {% for a in element %}
-    <p><b>{{ a }}</b>: {{element[a]}}</p>
-  {% endfor %}
-  <hr/>
-  {% endfor %}
-</div>
-</div>
+    <div>
+      <pre><code class="json">{{results}}</code></pre>
+    </div>
 {% endblock %}

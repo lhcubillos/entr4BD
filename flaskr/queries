@@ -1,8 +1,33 @@
-// postgres
-SELECT * FROM mytable;
-SELECT * FROM mytable WHERE nombre='Sebastián';
-
-// mongo
-myCollection.find()
-myCollection.find( {"gery": "lsakdjdsk"} )
-myCollection.insert( { "gery": "lsakdjdsk" } )
+{
+  "postgres": [
+    {
+      "name": "Seleccionar todo",
+      "description": "Una muy breve descripción",
+      "query": "SELECT * FROM mytable;"
+    },
+    {
+      "name": "Sebastián",
+      "description": "Una consulta de Sebastián 🙋",
+      "query": "SELECT * FROM mytable WHERE nombre='Sebastián';"
+    }
+  ],
+  "mongo" : [
+    {
+      "name": "Quiero todo de mongo 😄",
+      "description": "...",
+      "query": "myCollection.find()"
+    },
+    {
+      "name": "Lorem ipsum dolor sit amet",
+      "description":
+        " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
+      "query": "myCollection.find( {\"gery\": \"lsakdjdsk\"} )"
+    },
+    {
+      "name": "Lorem ipsum dolor sit amet",
+      "description":
+        " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
+      "query": "myCollection.insert( { \"gery\": \"lsakdjdsk\" } )"
+    }
+  ]
+}
