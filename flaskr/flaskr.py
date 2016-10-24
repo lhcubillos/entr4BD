@@ -15,7 +15,6 @@ sys.setdefaultencoding('utf-8')
 
 def create_app():
   app = Flask(__name__)
-  # Bootstrap(app)
   return app
 
 app = create_app()
@@ -34,38 +33,24 @@ POSTGRESUSER = "myuser"
 POSTGRESPASS = "mypass"
 postgresdb = psycopg2.connect(database=POSTGRESDATABASE, user=POSTGRESUSER, password=POSTGRESPASS)
 
-
-# @app.route("/", methods=['GET', 'POST'])
-# def home():
-#     if request.method == 'POST':
-#         query = request.form['query']
-#         db = request.form['db']
-#         if db == 'postgres':
-#             return postgres(query)
-#         else:
-#             return mongo(query)
-#     else:
-#         return render_template('form.html')
+QUERIES_FILENAME = 'queries'
 
 @app.route("/")
-def home ():
-    with open('queries', 'r') as queries_file:
+def home():
+    with open(QUERIES_FILENAME, 'r') as queries_file:
         json_file = json.load(queries_file)
-        pairs = [[x["name"], "postgres", x["description"], x["query"]] for x in json_file["postgres"]]
-        pairs.extend([[x["name"], "mongo", x["description"], x["query"]] for x in json_file["mongo"]])
-        return render_template('file.html', results = enumerate(pairs))
+        pairs = [(x["name"], x["database"], x["description"], x["query"]) for x in json_file]
+        return render_template('file.html', results = pairs)
 
 @app.route("/mongo")
 def mongo():
     query = request.args.get("query")
     results = eval('mongodb.'+query)
-    # results = json.dumps(results, sort_keys=True, indent=4, default=json_util.default)
     results = json_util.dumps(results, sort_keys=True, indent=4)
     if "find" in query:
         return render_template('mongo.html', results=results)
     else:
         return "ok"
-
 
 @app.route("/postgres")
 def postgres():

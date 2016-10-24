@@ -1,33 +1,34 @@
-{
-  "postgres": [
-    {
-      "name": "Seleccionar todo",
-      "description": "Una muy breve descripción",
-      "query": "SELECT * FROM mytable;"
-    },
-    {
-      "name": "Sebastián",
-      "description": "Una consulta de Sebastián 🙋",
-      "query": "SELECT * FROM mytable WHERE nombre='Sebastián';"
-    }
-  ],
-  "mongo" : [
-    {
-      "name": "Quiero todo de mongo 😄",
-      "description": "...",
-      "query": "myCollection.find()"
-    },
-    {
-      "name": "Lorem ipsum dolor sit amet",
-      "description":
-        " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
-      "query": "myCollection.find( {\"gery\": \"lsakdjdsk\"} )"
-    },
-    {
-      "name": "Lorem ipsum dolor sit amet",
-      "description":
-        " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
-      "query": "myCollection.insert( { \"gery\": \"lsakdjdsk\" } )"
-    }
-  ]
-}
+[
+  {
+    "name": "Seleccionar todo",
+    "database": "postgres",
+    "description": "Una muy breve descripción",
+    "query": "SELECT * FROM mytable;"
+  },
+  {
+  "name": "Lorem ipsum dolor sit amet",
+  "database": "mongo",
+  "description":
+  " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
+  "query": "myCollection.find( {\"gery\": \"lsakdjdsk\"} )"
+  },
+  {
+    "name": "Sebastián",
+    "database": "postgres",
+    "description": "Una consulta de Sebastián 🙋",
+    "query": "SELECT * FROM mytable WHERE nombre='Sebastián';"
+  },
+  {
+    "name": "Quiero todo de mongo 😄",
+    "database": "mongo",
+    "description": "...",
+    "query": "myCollection.find()"
+  },
+  {
+    "name": "Lorem ipsum dolor sit amet",
+    "database": "mongo",
+    "description":
+      " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
+    "query": "myCollection.insert( { \"gery\": \"lsakdjdsk\" } )"
+  }
+]

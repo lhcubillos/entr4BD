@@ -3,12 +3,12 @@
 {% block content %}
   <div class="main-container">
     <div class="container">
-      {% for index, (name, db, description, query) in results %}
-      {% set algomuysucio = 'onClickQuery("{}","{}","{}")'.format(index, db, query) %}
+      {% for name, db, description, query in results %}
+      {% set algomuysucio = 'onClickQuery("{}","{}")'.format(db, query) %}
 
       <div class="query-card mdl-shadow--2dp">
         <div class="mdl-card__title">
-          <h6>{{index}} - {{db}} - {{name}}</h6>
+          <h6>{{db}} - {{name}}</h6>
           <button
             class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect play"
           >

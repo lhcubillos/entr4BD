@@ -13,7 +13,7 @@ $(document).ready(function(){
   });
   $(".mdl-button.mdl-button--icon.mdl-js-button.mdl-js-ripple-effect.play")
     .click(function() {
-      var db = $(this).prev()[0].textContent.split('-')[1].trim();
+      var db = $(this).prev()[0].textContent.split('-')[0].trim();
       var query = $(this).parent().parent().find(".query-card-code > span")[0].textContent;
       window.location.assign(location.href+db+'?query='+query);
   });
