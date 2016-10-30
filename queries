@@ -9,8 +9,8 @@
   "name": "Lorem ipsum dolor sit amet",
   "database": "mongo",
   "description":
-  " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
-  "query": "myCollection.find( {\"gery\": \"lsakdjdsk\"} )"
+  "Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
+  "query": "myCollection.find( {\"attribute\": \"value\"} )"
   },
   {
     "name": "Sebastián",
@@ -25,10 +25,10 @@
     "query": "myCollection.find()"
   },
   {
-    "name": "Lorem ipsum dolor sit amet",
+    "name": "Insertar a mongo",
     "database": "mongo",
     "description":
-      " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
-    "query": "myCollection.insert( { \"gery\": \"lsakdjdsk\" } )"
+      "Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
+    "query": "myCollection.insert( { \"attribute\": \"value\" } )"
   }
 ]
