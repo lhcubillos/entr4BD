@@ -1,34 +1,38 @@
 [
   {
-    "name": "Seleccionar todo",
+    "name": "Consulta 1",
     "database": "postgres",
-    "description": "Una muy breve descripción",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "query": "SELECT * FROM mytable;"
   },
   {
-  "name": "Lorem ipsum dolor sit amet",
-  "database": "mongo",
-  "description":
-  " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
-  "query": "myCollection.find( {\"gery\": \"lsakdjdsk\"} )"
-  },
-  {
-    "name": "Sebastián",
+    "name": "Consulta 2",
     "database": "postgres",
-    "description": "Una consulta de Sebastián 🙋",
-    "query": "SELECT * FROM mytable WHERE nombre='Sebastián';"
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "query": "SELECT * FROM mytable;"
   },
   {
-    "name": "Quiero todo de mongo 😄",
+    "name": "Consulta 3",
     "database": "mongo",
-    "description": "...",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "query": "myCollection.find()"
   },
   {
-    "name": "Lorem ipsum dolor sit amet",
+    "name": "Consulta 4",
+    "database": "postgres",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "query": "SELECT * FROM mytable;"
+  },
+  {
+    "name": "Consulta 5",
     "database": "mongo",
-    "description":
-      " Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
-    "query": "myCollection.insert( { \"gery\": \"lsakdjdsk\" } )"
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "query": "myCollection.find()"
+  },
+  {
+    "name": "Consulta 6",
+    "database": "mongo",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "query": "myCollection.find()"
   }
 ]

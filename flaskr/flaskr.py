@@ -19,6 +19,9 @@ def create_app():
 
 app = create_app()
 
+
+QUERIES_FILENAME = 'queries'
+
 # Mongo config
 MONGODATABASE = "myDatabase"
 # MONGOCOLLECTION = "myCollection"
@@ -32,8 +35,6 @@ POSTGRESDATABASE = "mydatabase"
 POSTGRESUSER = "myuser"
 POSTGRESPASS = "mypass"
 postgresdb = psycopg2.connect(database=POSTGRESDATABASE, user=POSTGRESUSER, password=POSTGRESPASS)
-
-QUERIES_FILENAME = 'queries'
 
 @app.route("/")
 def home():
@@ -60,10 +61,6 @@ def postgres():
     results = [[a for a in result] for result in cursor]
     print (results)
     return render_template('postgres.html', results=results)
-
-@app.route("/example")
-def example():
-    return render_template('example.html')
 
 if __name__ == "__main__":
     app.debug = True
