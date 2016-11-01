@@ -29,10 +29,4 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "query": "myCollection.find()"
   },
-  {
-    "name": "Consulta 6",
-    "database": "mongo",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "query": "myCollection.find()"
-  }
 ]
