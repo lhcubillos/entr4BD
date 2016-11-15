@@ -9,16 +9,15 @@
 * ⚗ [Flask](http://flask.pocoo.org/docs/0.11/installation/)
 * Instalar requerimientos:
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Uso
 1. Iniciar las bases de datos
 2. Iniciar la aplicación:
 ```shell
-cd flaskr
-export FLASK_APP=flaskr.py
-python -m flask run
+export FLASK_APP=flaskr
+python3 -m flask run
 ```
 
 Nuestra aplicación correrá [aquí](http://127.0.0.1:5000/) y al iniciarla verás algunas tarjetas como la de la figura. Cada una de ellas representa una consulta a nuestras bases de datos.
@@ -39,10 +38,6 @@ Adicionalmente, cada tarjeta contiene un botón _play_ que desplegará una repre
 Para estar más familiarizado con Flask, puedes encontrar [aquí](http://flask.pocoo.org/) la información necesaria.
 
 ## Estructura
-
-La aplicación tiene los siguientes archivos y directorios:
-
-<img src="Doc/01.png" style="width:200px;"/>
 
 El archivo principal es _flaskr.py_, en él está toda la lógica de esta pequeña aplicación. Existen tres rutas principales y funciones asociadas a ellas.
 
