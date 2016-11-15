@@ -34,12 +34,13 @@ postgresdb = psycopg2.connect(
     password=POSTGRESPASS)
 '''
 
+#Cambiar por Path Absoluto en el servidor
 QUERIES_FILENAME = 'queries'
 
 
 @app.route("/")
 def home():
-    with open(QUERIES_FILENAME, 'r') as queries_file:
+    with open(QUERIES_FILENAME, 'r', encoding='utf-8') as queries_file:
         json_file = json.load(queries_file)
         pairs = [(x["name"],
                   x["database"],
