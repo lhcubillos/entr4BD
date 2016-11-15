@@ -1,32 +1,34 @@
 [
   {
-    "name": "Consulta 1",
+    "name": "Seleccionar todo",
     "database": "postgres",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "Una muy breve descripción",
     "query": "SELECT * FROM mytable;"
   },
   {
-    "name": "Consulta 2",
-    "database": "postgres",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "query": "SELECT * FROM mytable;"
+  "name": "Lorem ipsum dolor sit amet",
+  "database": "mongo",
+  "description":
+  "Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
+  "query": "myCollection.find( {\"attribute\": \"value\"} )"
   },
   {
-    "name": "Consulta 3",
+    "name": "Sebastián",
+    "database": "postgres",
+    "description": "Una consulta de Sebastián 🙋",
+    "query": "SELECT * FROM mytable WHERE nombre='Sebastián';"
+  },
+  {
+    "name": "Quiero todo de mongo 😄",
     "database": "mongo",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "...",
     "query": "myCollection.find()"
   },
   {
-    "name": "Consulta 4",
-    "database": "postgres",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "query": "SELECT * FROM mytable;"
-  },
-  {
-    "name": "Consulta 5",
+    "name": "Insertar a mongo",
     "database": "mongo",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "query": "myCollection.find()"
-  },
+    "description":
+      "Vestibulum vulputate metus at nisl lacinia blandit. Quisque fermentum sagittis mi",
+    "query": "myCollection.insert( { \"attribute\": \"value\" } )"
+  }
 ]
