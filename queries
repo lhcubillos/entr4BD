@@ -22,7 +22,7 @@
     "name": "Quiero todo de mongo 😄",
     "database": "mongo",
     "description": "...",
-    "query": "myCollection.find()"
+    "query": “escuchas.find()"
   },
   {
     "name": "Insertar a mongo",
