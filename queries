@@ -22,7 +22,11 @@
     "name": "Quiero todo de mongo 😄",
     "database": "mongo",
     "description": "...",
+<<<<<<< HEAD
     "query": "escuchas.find()"
+=======
+    "query": “escuchas.find()"
+>>>>>>> 344a518811e3e099ea4d3491e2ed7d5b8d6739da
   },
   {
     "name": "Insertar a mongo",
