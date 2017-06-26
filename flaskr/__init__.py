@@ -17,7 +17,7 @@ def create_app():
 app = create_app()
 
 # REPLACE WITH YOUR DATABASE NAME
-MONGODATABASE = "myDatabase"
+MONGODATABASE = "escuchas"
 MONGOSERVER = "localhost"
 MONGOPORT = 27017
 client = MongoClient(MONGOSERVER, MONGOPORT)
@@ -35,7 +35,7 @@ postgresdb = psycopg2.connect(
 '''
 
 #Cambiar por Path Absoluto en el servidor
-QUERIES_FILENAME = 'queries'
+QUERIES_FILENAME = '/var/www/flaskr/queries'
 
 
 @app.route("/")
