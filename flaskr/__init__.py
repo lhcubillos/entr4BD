@@ -46,7 +46,7 @@ def home():
                   x["database"],
                   x["description"],
                   x["query"]) for x in json_file]
-	#return "hola"
+        #return "hola"
         return render_template('file.html', results=pairs)
 
 
@@ -56,7 +56,7 @@ def mongo():
     results = eval('mongodb.'+query)
     results = json_util.dumps(results)
     if "find" in query:
-	return jsonify(results)
+        return jsonify(results)
         #return render_template('mongo.html', results=results)
     else:
         return "ok"
