@@ -56,7 +56,7 @@ def mongo():
     results = eval('mongodb.'+query)
     results = json_util.dumps(results)
     if "find" in query:
-        return jsonify(results)
+        return results
         #return render_template('mongo.html', results=results)
     else:
         return "ok"
